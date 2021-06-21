@@ -1,4 +1,5 @@
 ﻿using System;
+using AbstractFactory.Practical;
 
 namespace AbstractFactory
 {
@@ -6,7 +7,10 @@ namespace AbstractFactory
     {
         static void Main(string[] args)
         {
-            new Client().Main();
+            // new Client().Main();
+
+            //Practical.
+            new ClientPractical().Main();
         }
     }
 
@@ -24,6 +28,26 @@ namespace AbstractFactory
         public void Main()
         {
             ClientMethod(new FruitFactory());
+        }
+    }
+
+
+    class ClientPractical
+    {
+        public void CreateFactory(ITransportFactory transportFactory)
+        {
+            var car = transportFactory.Car();
+            var ship = transportFactory.Ship();
+
+            Console.WriteLine("Factories were created by ClientPractical class. \n");
+            Console.WriteLine("Car's method DoBeep: " + car.DoBeep());
+            Console.WriteLine("Ship's method DoBeep: " + ship.DoBeep());
+        }
+
+
+        public void Main()
+        {
+            CreateFactory(new TransportFactory());
         }
     }
 }
