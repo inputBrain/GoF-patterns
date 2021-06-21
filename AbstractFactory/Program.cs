@@ -6,7 +6,24 @@ namespace AbstractFactory
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new Client().Main();
+        }
+    }
+
+    class Client
+    {
+        public void ClientMethod(IFruitFactory factory)
+        {
+            var apple = factory.CreateApple();
+            var orange = factory.CreateOrange();
+
+            Console.WriteLine(orange.Title);
+            Console.WriteLine(orange.UsefulFunction(apple));
+        }
+
+        public void Main()
+        {
+            ClientMethod(new FruitFactory());
         }
     }
 }
