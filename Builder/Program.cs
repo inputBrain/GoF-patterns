@@ -1,4 +1,5 @@
 ﻿using System;
+using Builder.Practical;
 
 namespace Builder
 {
@@ -24,11 +25,19 @@ namespace Builder
             Console.WriteLine(builder.GetProduct().ListParts());
 
 
-            Console.WriteLine("\n \n Build concrete product without Director class:");
+            Console.WriteLine("\n Build concrete product without Director class:");
             builder.BuildPartA();
             builder.BuildPartB();
             builder.BuildPartC();
             Console.WriteLine(builder.GetProduct().ListParts());
+
+            Console.WriteLine("\n === Practical work ===");
+            var house = new HouseBuilder();
+            house.SetBathroomCount(3);
+            house.SetDoorsCount(5);
+            house.SetPictureCount(6);
+            house.GetHouse();
+
         }
     }
 }
